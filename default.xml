@@ -13,16 +13,20 @@
   <remote  name="private"
            fetch="ssh://git@github.com" />
 
+  <remote  name="lxt"
+           fetch="https://github.com/Lineage-Xtended"
+	   revision="cm-13.0" />
+
   <default revision="refs/heads/cm-13.0"
            remote="github"
            sync-c="true"
            sync-j="4" />
 
 <!-- BEGIN LINEAGEOS -->
-  <project path="build" name="LineageOS/android_build" groups="pdk" >
+  <project path="build" name="android_build" groups="pdk" remote="lxt" >
     <copyfile src="core/root.mk" dest="Makefile" />
   </project>
-  <project path="android" name="LineageOS/android" />
+  <project path="android" name="android" remote="lxt" />
   <project path="abi/cpp" name="LineageOS/android_abi_cpp" groups="pdk" />
   <project path="art" name="LineageOS/android_art" groups="pdk" />
   <project path="bionic" name="LineageOS/android_bionic" groups="pdk" />
@@ -144,7 +148,6 @@
   <project path="external/zip" name="LineageOS/android_external_zip" />
   <project path="external/zlib" name="LineageOS/android_external_zlib" groups="pdk" />
   <project path="frameworks/av" name="LineageOS/android_frameworks_av" groups="pdk" />
-  <project path="frameworks/base" name="LineageOS/android_frameworks_base" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/compile/libbcc" name="LineageOS/android_frameworks_compile_libbcc" groups="pdk" />
   <project path="frameworks/compile/mclinker" name="LineageOS/android_frameworks_compile_mclinker" groups="pdk" />
   <project path="frameworks/compile/slang" name="LineageOS/android_frameworks_compile_slang" groups="pdk" />
@@ -270,7 +273,6 @@
   <project path="packages/services/LiveLockScreenService" name="LineageOS/android_packages_services_LiveLockScreenService" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/services/Mms" name="LineageOS/android_packages_services_Mms" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/services/Telecomm" name="LineageOS/android_packages_services_Telecomm" groups="pdk-cw-fs,pdk-fs" />
-  <project path="packages/services/Telephony" name="LineageOS/android_packages_services_Telephony" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/services/ThemeManagerService" name="LineageOS/android_packages_services_ThemeManagerService" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/services/WeatherService" name="LineageOS/android_packages_services_WeatherService" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/themes/HexoLibre" name="LineageOS/android_packages_themes_HexoLibre" groups="themes" />
@@ -293,7 +295,6 @@
   <project path="system/qcom" name="LineageOS/android_system_qcom" groups="qcom" />
   <project path="system/security" name="LineageOS/android_system_security" groups="pdk" />
   <project path="system/vold" name="LineageOS/android_system_vold" groups="pdk" />
-  <project path="vendor/cm" name="LineageOS/android_vendor_cm" />
   <project path="vendor/cmsdk" name="LineageOS/cm_platform_sdk" />
 
 <!-- CMSDK SAMPLES -->
@@ -522,4 +523,8 @@
   <project path="system/gatekeeper" name="platform/system/gatekeeper" groups="pdk" remote="aosp" />
 <!-- END AOSP -->
 
+<!-- Xtended -->
+  <project path="frameworks/base" name="android_frameworks_base" remote="lxt" />
+  <project path="vendor/cm" name="android_vendor_lxt" remote="lxt" />
+  <project path="packages/services/Telephony" name="android_packages_services_Telephony" remote="lxt" />
 </manifest>
